@@ -11,6 +11,8 @@
 ## 5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 #######################################################################################################################
 
+library(dplyr)
+
 ## 1. Merge train and test datasets to create one dataset
 ## Read the data from ./data/UCI HAR Dataset/train and also assign column names
 features <- read.table("./data/UCI HAR Dataset/features.txt")
@@ -72,6 +74,10 @@ names(subData) <- colNames
 ## activityType as factor variable
 subData <- transform(subData, activityType = factor(activityType))
 
-## 5. Create a second, independent tidy data set with the average of each variable for each activity and each subject.
+## 5. Create a second, independent tidy data set with the average of 
+## each variable for each activity and each subject.
+
+tidydata <- subData %>% group_by(subjectId, activityType) %>% summarise_each(funs(mean))
+
 ## Create a new table
-write.table(subData, "./tidydata.txt", row.names=FALSE)
+write.table(tidydata, "./tidydata.txt", row.names=FALSE)
