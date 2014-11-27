@@ -57,7 +57,7 @@
     
  $ tGravityAccelerationStdY
  
-    Standard deviation of the time signals of mesaured from the gravity acceleration in Y-axis direction
+    Standard deviation of the time signals mesaured from the gravity acceleration in Y-axis direction
     
  $ tGravityAccelerationStdZ 
  
